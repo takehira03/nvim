@@ -1,0 +1,92 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+
+[[plugins]]
+repo = 'Shougo/unite-outline'
+hook_add = '''
+	nnoremap <Leader>o :Unite -no-split outline<CR>
+'''
+
+[[plugins]]
+repo = 'ctrlpvim/ctrlp.vim'
+hook_add = '''
+	let g:ctrlp_by_filename = 1
+	let g:ctrlp_switch_buffer = 'et'
+	set wildignore+=*.obj,*.sdf,*.smp,*.ipch,*.idb,*.pdb
+'''
+
+[[plugins]]
+repo = 'FelikZ/ctrlp-py-matcher'
+hook_add = '''
+	let g:ctrlp_match_func = {'match': 'pymatcher#PyMatch'}
+'''
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+	let g:lightline = {
+	\ 'colorscheme' : 'wombat',
+	\ 'component_function': {
+	\ 	'anzu': 'anzu#search_status'
+	\ }
+	\ }
+
+	let g:lightline.active = {
+	\ 'left' : [
+	\	['mode', 'paste'],
+	\	['readonly', 'filename', 'modifield', 'anzu'],
+	\ ],
+	\ }
+
+	let g:lightline.inactive = {
+	\ 'left' : [
+	\	['readonly', 'filename', 'modified'],
+	\ ],
+	\ 'right' : [
+	\	['lineinfo'],
+	\	['percent'],
+	\	['fileformat', 'fileencoding', 'filetype'],
+	\ ],
+	\ }
+'''
+
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+hook_add = '''
+	vmap <Enter> <Plug>(EasyAlign)
+	nmap ga <Plug>(EasyAlign)
+	let g:easy_align_delimiters = {
+	\ ']': {
+	\     'pattern':       '[\]]',
+	\     'left_margin':   0,
+	\     'right_margin':  0,
+	\     'stick_to_left': 0,
+	\   },
+	\ ')': {
+	\     'pattern':       '[)]',
+	\     'left_margin':   0,
+	\     'right_margin':  0,
+	\     'stick_to_left': 0,
+	\   },
+	\ }
+'''
+
+[[plugins]]
+repo = 'embear/vim-localvimrc'
+hook_add = '''
+	let g:localvimrc_ask = 0
+	let g:localvimrc_sandbox = 0
+'''
+
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+hook_add = '''
+	let g:EasyMotion_do_mapping = 0
+	let g:EasyMotion_smartcase = 1
+	nmap s <Plug>(easymotion-overwin-f2)
+	nmap f <Plug>(easymotion-bd-f)
+	nmap <Leader>l <Plug>(easymotion-bd-jk)
+'''

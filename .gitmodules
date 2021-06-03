@@ -1,0 +1,6 @@
+[submodule "dein/repos/github.com/Shougo/dein.vim"]
+	path = dein/repos/github.com/Shougo/dein.vim
+	url = https://github.com/Shougo/dein.vim
+[submodule "pack/ownpack/start/molokaifork"]
+	path = pack/ownpack/start/molokaifork
+	url = https://github.com/takehira03/molokaifork
