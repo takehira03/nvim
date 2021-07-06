@@ -2,26 +2,28 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
+repo = 'Shougo/denite.nvim'
+hook_add = '''
+	autocmd FileType denite call s:denite_my_settings()
+	function! s:denite_my_settings() abort
+		nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+	  	nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
+	  	nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
+	  	nnoremap <silent><buffer><expr> q denite#do_map('quit')
+	  	nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
+	  	nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
+	endfunction
+
+	nnoremap <C-p> :Denite file/rec -start-filter<CR>
+'''
+
+[[plugins]]
 repo = 'Shougo/unite.vim'
 
 [[plugins]]
 repo = 'Shougo/unite-outline'
 hook_add = '''
 	nnoremap <Leader>o :Unite -no-split outline<CR>
-'''
-
-[[plugins]]
-repo = 'ctrlpvim/ctrlp.vim'
-hook_add = '''
-	let g:ctrlp_by_filename = 1
-	let g:ctrlp_switch_buffer = 'et'
-	set wildignore+=*.obj,*.sdf,*.smp,*.ipch,*.idb,*.pdb
-'''
-
-[[plugins]]
-repo = 'FelikZ/ctrlp-py-matcher'
-hook_add = '''
-	let g:ctrlp_match_func = {'match': 'pymatcher#PyMatch'}
 '''
 
 [[plugins]]
