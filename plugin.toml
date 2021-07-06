@@ -90,3 +90,10 @@ hook_add = '''
 	nmap f <Plug>(easymotion-bd-f)
 	nmap <Leader>l <Plug>(easymotion-bd-jk)
 '''
+
+
+[[plugins]]
+repo = 'cocopon/vaffle.vim'
+hook_add = '''
+	nnoremap <C-e> :Vaffle<CR>
+'''
