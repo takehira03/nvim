@@ -110,10 +110,4 @@ com! Copyfilename let @* = expand('%:t') | echo @*
 " xml、htmlなどのタグジャンプ
 source $VIMRUNTIME/macros/matchit.vim
 
-" 適時IME無効
-if executable('zenhan')
-	autocmd InsertLeave * :call system('zenhan 0')
-	autocmd CmdlineLeave * :call system('zenhan 0')
-endif
-
 " vim:set foldmethod=marker:
