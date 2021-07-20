@@ -99,3 +99,9 @@ repo = 'pepo-le/win-ime-con.nvim'
 hook_add = '''
 	let g:win_ime_con_mode = 0
 '''
+
+[[plugins]]
+repo = 'mileszs/ack.vim'
+hook_add = '''
+	let g:ackprg = 'pt'
+'''
