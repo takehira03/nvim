@@ -65,6 +65,9 @@ set nofixeol
 " ウィンドウのタイトルにファイル名を表示
 set title
 
+" 折り返ししない
+set nowrap
+
 " ノーマルモードでも改行
 nnoremap <CR> :execute "normal o"<CR>
 nnoremap <S-CR> :execute "normal O"<CR>
