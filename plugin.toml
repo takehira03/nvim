@@ -18,7 +18,7 @@ hook_add = '''
 	endfunction
 
 	nnoremap <C-p> :Denite file/rec -start-filter<CR>
-	nnoremap <Leader>o :Denite outline -start-filter -split=no -filter-split-direction=topleft<CR>
+	nnoremap <Leader>o :Denite outline -start-filter -split=no -filter-split-direction=abo<CR>
 '''
 
 [[plugins]]
