@@ -22,6 +22,28 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'Shougo/deoplete.nvim'
+hook_add = '''
+	let g:deoplete#enable_at_startup = 1
+
+	call deoplete#custom#option('sources', {
+	\	'_': ['buffer'],
+	\	'txt': [],
+	\	'cpp': ['buffer', 'neosnippet'],
+	\})
+'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+hook_add = '''
+	let g:neosnippet#disable_runtime_snippets = {'_' : 1, 'cpp' : 0}
+
+	imap <C-k> <Plug>(neosnippet_expand_or_jump)
+	smap <C-k> <Plug>(neosnippet_expand_or_jump)
+	xmap <C-k> <Plug>(neosnippet_expand_target)
+'''
+
+[[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
 	let g:lightline = {
