@@ -91,7 +91,7 @@ hook_add = '''
 [[plugins]]
 repo = 'cocopon/vaffle.vim'
 hook_add = '''
-	nnoremap <C-e> :Vaffle<CR>
+	nnoremap <C-e> :Vaffle %:h<CR>
 '''
 
 [[plugins]]
