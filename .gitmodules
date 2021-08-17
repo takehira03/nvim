@@ -3,7 +3,7 @@
 	url = https://github.com/Shougo/dein.vim
 [submodule "pack/ownpack/start/molokaifork"]
 	path = pack/ownpack/start/molokaifork
-	url = https://github.com/takehira03/molokaifork
+	url = https://github.com/takehira17/molokaifork
 [submodule "pack/ownpack/start/p4.vim"]
 	path = pack/ownpack/start/p4.vim
-	url = https://github.com/takehira03/p4.vim
+	url = https://github.com/takehira17/p4.vim
