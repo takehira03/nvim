@@ -103,6 +103,9 @@ augroup not_keep_comment
 	autocmd BufEnter * setlocal formatoptions-=ro
 augroup END
 
+" nvimフォーカス時にチェック
+au FocusGained * :checktime
+
 " 今開いているファイルのディレクトリに移動
 com! Cdpwd cd %:h
 
