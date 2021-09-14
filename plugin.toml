@@ -57,7 +57,7 @@ hook_add = '''
 	let g:lightline.active = {
 	\ 'left' : [
 	\	['mode', 'paste'],
-	\	['readonly', 'filename', 'modifield', 'anzu'],
+	\	['readonly', 'filename', 'modified', 'anzu'],
 	\ ],
 	\ }
 
