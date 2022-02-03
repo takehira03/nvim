@@ -128,3 +128,6 @@ repo = 'mileszs/ack.vim'
 hook_add = '''
 	let g:ackprg = 'pt'
 '''
+
+[[plugins]]
+repo = 'ntpeters/vim-better-whitespace'
