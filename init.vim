@@ -68,6 +68,10 @@ set title
 " 折り返ししない
 set nowrap
 
+" プレビューウィンドウを表示しない
+set completeopt-=preview
+
+
 " ノーマルモードでも改行
 nnoremap <CR> :execute "normal o"<CR>
 nnoremap <S-CR> :execute "normal O"<CR>
