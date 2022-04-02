@@ -11,11 +11,11 @@ hook_add = '''
 		nnoremap <silent><buffer><expr> s denite#do_map('do_action', 'split')
 		nnoremap <silent><buffer><expr> v denite#do_map('do_action', 'vsplit')
 		nnoremap <silent><buffer><expr> t denite#do_map('do_action', 'tabopen')
-	  	nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
-	  	nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
-	  	nnoremap <silent><buffer><expr> q denite#do_map('quit')
-	  	nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
-	  	nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
+		nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
+		nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
+		nnoremap <silent><buffer><expr> q denite#do_map('quit')
+		nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
+		nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
 	endfunction
 
 	nnoremap <C-p> :Denite file/rec -start-filter<CR>
@@ -23,15 +23,69 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
-hook_add = '''
-	let g:deoplete#enable_at_startup = 1
+repo = 'vim-denops/denops.vim'
 
-	call deoplete#custom#option('sources', {
-	\	'_': ['buffer'],
-	\	'txt': [],
-	\	'cpp': ['buffer', 'neosnippet'],
-	\})
+[[plugins]]
+repo = 'Shougo/ddc-around'
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_head'
+
+[[plugins]]
+repo = 'Shougo/ddc-sorter_rank'
+
+[[plugins]]
+repo = 'Shougo/ddc-nvim-lsp'
+
+[[plugins]]
+repo = 'Shougo/pum.vim'
+
+[[plugins]]
+repo = 'neovim/nvim-lspconfig'
+
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+depends = ['denops.vim', 'pum.vim']
+hook_source = '''
+	call ddc#custom#patch_global('sources', ['around', 'nvim-lsp'])
+	call ddc#custom#patch_global(
+		\ 'sourceOptions',
+		\ {
+		\ 	'_': {
+		\ 		'matchers': ['matcher_head'],
+		\ 		'sorters': ['sorter_rank'],
+		\ 	},
+		\ 	'nvim-lsp': {
+		\ 		'mark': 'lsp',
+		\ 		'matchers': ['matcher_head'],
+		\ 		'forceCompletionPattern': '\.\w*|:\w*|->\w*',
+		\ 	},
+		\ 	'around': {
+		\ 		'mark': 'A'
+		\ 	},
+		\ })
+
+	call ddc#custom#patch_global(
+		\ 'sourceParams',
+		\ {
+		\ 	'around': {'maxSize': 500},
+		\ 	'nvim-lsp': {'kindLabels': {'Class': 'c'}}
+		\ })
+
+	" Customize settings on a filetype
+	call ddc#custom#patch_filetype(['c', 'cpp'], 'sources', ['around', 'nvim-lsp'])
+
+	" <TAB>: completion.
+	inoremap <silent><expr> <TAB>
+	\ ddc#map#pum_visible() ? '<C-n>' :
+	\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+	\ '<TAB>' : ddc#map#manual_complete()
+
+	" <S-TAB>: completion back.
+	inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
+
+	" Use ddc.
+	call ddc#enable()
 '''
 
 [[plugins]]
@@ -42,6 +96,27 @@ hook_add = '''
 	imap <C-k> <Plug>(neosnippet_expand_or_jump)
 	smap <C-k> <Plug>(neosnippet_expand_or_jump)
 	xmap <C-k> <Plug>(neosnippet_expand_target)
+'''
+
+[[plugins]]
+repo = 'matsui54/denops-popup-preview.vim'
+hook_add = '''
+	call popup_preview#enable()
+'''
+
+[[plugins]]
+repo = 'matsui54/denops-signature_help'
+hook_add = '''
+	call signature_help#enable()
+'''
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip'
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip-integ'
+hook_add = '''
+	autocmd User PumCompleteDone call vsnip_integ#on_complete_done(g:pum#completed_item)
 '''
 
 [[plugins]]
