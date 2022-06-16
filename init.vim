@@ -30,6 +30,9 @@ colorscheme molokai
 "シンタックスを有効
 syntax enable
 
+" ファイルエンコード
+set fileencodings=ucs-bom,utf-8,cp932,sjis,default,latin
+
 " タブ
 set noexpandtab
 set tabstop=4
