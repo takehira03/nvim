@@ -22,6 +22,8 @@ if dein#load_state(s:dein_dir)
 	call dein#save_state()
 endif
 
+autocmd VimEnter * call dein#call_hook('post_source')
+
 " }}} プラグインここまで
 
 " カラースキーマ

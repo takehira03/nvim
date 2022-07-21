@@ -209,3 +209,16 @@ hook_add = '''
 
 [[plugins]]
 repo = 'ntpeters/vim-better-whitespace'
+
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+hook_post_source = '''
+lua <<EOF
+require('nvim-treesitter.configs').setup {
+	ensure_installed = 'cpp',
+	highlight = {
+		enable = true,
+	},
+}
+EOF
+'''
